@@ -1,16 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Home, Briefcase, User, LogOut, Menu, ChevronLeft, ChevronRight, Bell } from "lucide-react"
+import { Home, Briefcase, User, LogOut, ChevronLeft, ChevronRight, Bell } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -95,7 +95,7 @@ export default function Dashboard() {
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false)
 
-  const handleLogin = (email: string, password: string) => {
+  const handleLogin = (email: string) => {
     const mockUser: User = { id: "1", name: "Usuario Ejemplo", email, type: "cliente" }
     setUser(mockUser)
     setIsLoginModalOpen(false)
@@ -417,7 +417,7 @@ export default function Dashboard() {
               <form onSubmit={(e) => {
                 e.preventDefault()
                 const formData = new FormData(e.currentTarget)
-                handleLogin(formData.get('email') as string, formData.get('password') as string)
+                handleLogin(formData.get('email') as string)
               }} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Correo electrónico</Label>
